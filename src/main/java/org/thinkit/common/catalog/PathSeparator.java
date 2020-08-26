@@ -14,6 +14,8 @@
 
 package org.thinkit.common.catalog;
 
+import org.thinkit.api.catalog.BiCatalog;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -25,7 +27,7 @@ import lombok.RequiredArgsConstructor;
  * @version 1.0
  */
 @RequiredArgsConstructor
-public enum PathSeparator implements Catalog<PathSeparator> {
+public enum PathSeparator implements BiCatalog<PathSeparator, String> {
 
     /**
      * セパレータ : {@code "/"}
@@ -49,8 +51,41 @@ public enum PathSeparator implements Catalog<PathSeparator> {
     private final int code;
 
     /**
-     * セパレータ
+     * タグ
      */
     @Getter
-    private final String separator;
+    private final String tag;
+
+    /**
+     * {@link #SLASH} 要素の文字列表現を返却します。
+     *
+     * @return {@link #SLASH} 要素の文字列表現
+     *
+     * @see #SLASH
+     */
+    public static String slash() {
+        return SLASH.getTag();
+    }
+
+    /**
+     * {@link #BACK_SLASH} 要素の文字列表現を返却します。
+     *
+     * @return {@link #BACK_SLASH} 要素の文字列表現
+     *
+     * @see #BACK_SLASH
+     */
+    public static String backSlash() {
+        return BACK_SLASH.getTag();
+    }
+
+    /**
+     * {@link #COLON} 要素の文字列表現を返却します。
+     *
+     * @return {@link #COLON} 要素の文字列表現
+     *
+     * @see #SLCOLONASH
+     */
+    public static String colon() {
+        return COLON.getTag();
+    }
 }

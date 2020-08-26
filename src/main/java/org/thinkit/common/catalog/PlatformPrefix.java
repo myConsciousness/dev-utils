@@ -14,6 +14,8 @@
 
 package org.thinkit.common.catalog;
 
+import org.thinkit.api.catalog.BiCatalog;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -31,7 +33,7 @@ import lombok.RequiredArgsConstructor;
  * @version 1.0
  */
 @RequiredArgsConstructor
-public enum PlatformPrefix implements Catalog<PlatformPrefix> {
+public enum PlatformPrefix implements BiCatalog<PlatformPrefix, String> {
 
     /**
      * Windows
@@ -55,10 +57,10 @@ public enum PlatformPrefix implements Catalog<PlatformPrefix> {
     private final int code;
 
     /**
-     * 接頭辞
+     * タグ
      */
     @Getter
-    private final String prefix;
+    private final String tag;
 
     /**
      * Windows OSの接頭辞を返却します。<br>
@@ -68,7 +70,7 @@ public enum PlatformPrefix implements Catalog<PlatformPrefix> {
      * @see WINDOWS
      */
     public static String windows() {
-        return WINDOWS.getPrefix();
+        return WINDOWS.getTag();
     }
 
     /**
@@ -79,7 +81,7 @@ public enum PlatformPrefix implements Catalog<PlatformPrefix> {
      * @see MAC
      */
     public static String mac() {
-        return MAC.getPrefix();
+        return MAC.getTag();
     }
 
     /**
@@ -90,6 +92,6 @@ public enum PlatformPrefix implements Catalog<PlatformPrefix> {
      * @see LINUX
      */
     public static String linux() {
-        return LINUX.getPrefix();
+        return LINUX.getTag();
     }
 }

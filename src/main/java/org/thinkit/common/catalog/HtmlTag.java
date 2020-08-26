@@ -14,6 +14,8 @@
 
 package org.thinkit.common.catalog;
 
+import org.thinkit.api.catalog.BiCatalog;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -29,9 +31,8 @@ import lombok.RequiredArgsConstructor;
  * @since 1.0
  * @version 1.0
  */
-@Getter
 @RequiredArgsConstructor
-public enum HtmlTag implements Catalog<HtmlTag> {
+public enum HtmlTag implements BiCatalog<HtmlTag, String> {
 
     /**
      * 改行
@@ -46,12 +47,14 @@ public enum HtmlTag implements Catalog<HtmlTag> {
     /**
      * コード値
      */
+    @Getter
     private final int code;
 
     /**
-     * HTMLタグ
+     * タグ
      */
-    private final String htmlTag;
+    @Getter
+    private final String tag;
 
     /**
      * 改行のHTMLタグを返却します。
@@ -60,7 +63,7 @@ public enum HtmlTag implements Catalog<HtmlTag> {
      * @see #BREAK
      */
     public static String br() {
-        return BREAK.getHtmlTag();
+        return BREAK.getTag();
     }
 
     /**
@@ -70,6 +73,6 @@ public enum HtmlTag implements Catalog<HtmlTag> {
      * @see #PARAGRAPH
      */
     public static String p() {
-        return PARAGRAPH.getHtmlTag();
+        return PARAGRAPH.getTag();
     }
 }

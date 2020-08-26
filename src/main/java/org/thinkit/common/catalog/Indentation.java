@@ -14,7 +14,8 @@
 
 package org.thinkit.common.catalog;
 
-import org.thinkit.common.exception.LogicException;
+import org.thinkit.api.catalog.BiCatalog;
+import org.thinkit.common.Precondition;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -32,9 +33,8 @@ import lombok.RequiredArgsConstructor;
  * @since 1.0
  * @version 1.0
  */
-@Getter
 @RequiredArgsConstructor
-public enum Indentation implements Catalog<Indentation> {
+public enum Indentation implements BiCatalog<Indentation, String> {
 
     /**
      * 半角スペース
@@ -54,12 +54,14 @@ public enum Indentation implements Catalog<Indentation> {
     /**
      * コード値
      */
+    @Getter
     private final int code;
 
     /**
-     * インデント文字列
+     * タグ
      */
-    private final String character;
+    @Getter
+    private final String tag;
 
     /**
      * 半角空白を返却します。
@@ -68,7 +70,7 @@ public enum Indentation implements Catalog<Indentation> {
      * @see #SPACE
      */
     public static String space() {
-        return SPACE.getCharacter();
+        return SPACE.getTag();
     }
 
     /**
@@ -78,7 +80,7 @@ public enum Indentation implements Catalog<Indentation> {
      * @see #TAB
      */
     public static String tabCode() {
-        return TAB.getCharacter();
+        return TAB.getTag();
     }
 
     /**
@@ -88,7 +90,7 @@ public enum Indentation implements Catalog<Indentation> {
      * @see #RETURN
      */
     public static String returnCode() {
-        return RETURN.getCharacter();
+        return RETURN.getTag();
     }
 
     /**
@@ -115,9 +117,7 @@ public enum Indentation implements Catalog<Indentation> {
      */
     public static String getIndentSpaces(int number) {
 
-        if (number < 0) {
-            throw new LogicException("Indent count must be positive.");
-        }
+        Precondition.requirePositive(number);
 
         final StringBuilder indentSpaces = new StringBuilder(number);
         final String space = space();
@@ -153,9 +153,7 @@ public enum Indentation implements Catalog<Indentation> {
      */
     public static String getIndentTabs(int number) {
 
-        if (number < 0) {
-            throw new LogicException("Tab count must be positive.");
-        }
+        Precondition.requirePositive(number);
 
         final StringBuilder indentTabs = new StringBuilder(number);
         final String tabCode = tabCode();

@@ -14,6 +14,8 @@
 
 package org.thinkit.common.catalog;
 
+import org.thinkit.api.catalog.BiCatalog;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -31,9 +33,8 @@ import lombok.RequiredArgsConstructor;
  * @since 1.0
  * @version 1.0
  */
-@Getter
 @RequiredArgsConstructor
-public enum Delimiter implements Catalog<Delimiter> {
+public enum Delimiter implements BiCatalog<Delimiter, String> {
 
     /**
      * カンマ
@@ -58,12 +59,14 @@ public enum Delimiter implements Catalog<Delimiter> {
     /**
      * コード値
      */
+    @Getter
     private final int code;
 
     /**
-     * 区切り文字
+     * タグ
      */
-    private final String delimiter;
+    @Getter
+    private final String tag;
 
     /**
      * カンマの文字列表現を返却します。
@@ -71,7 +74,7 @@ public enum Delimiter implements Catalog<Delimiter> {
      * @return カンマの文字列表現
      */
     public static String comma() {
-        return COMMA.getDelimiter();
+        return COMMA.getTag();
     }
 
     /**
@@ -80,7 +83,7 @@ public enum Delimiter implements Catalog<Delimiter> {
      * @return ピリオドの文字列表現
      */
     public static String period() {
-        return PERIOD.getDelimiter();
+        return PERIOD.getTag();
     }
 
     /**
@@ -89,7 +92,7 @@ public enum Delimiter implements Catalog<Delimiter> {
      * @return コロンの文字列表現
      */
     public static String colon() {
-        return COLON.getDelimiter();
+        return COLON.getTag();
     }
 
     /**
@@ -98,6 +101,6 @@ public enum Delimiter implements Catalog<Delimiter> {
      * @return セミコロンの文字列表現
      */
     public static String semicolon() {
-        return SEMICOLON.getDelimiter();
+        return SEMICOLON.getTag();
     }
 }

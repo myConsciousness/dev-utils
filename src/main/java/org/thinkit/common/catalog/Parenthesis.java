@@ -14,6 +14,8 @@
 
 package org.thinkit.common.catalog;
 
+import org.thinkit.api.catalog.BiCatalog;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -29,9 +31,8 @@ import lombok.RequiredArgsConstructor;
  * @since 1.0
  * @version 1.0
  */
-@Getter
 @RequiredArgsConstructor
-public enum Parenthesis implements Catalog<Parenthesis> {
+public enum Parenthesis implements BiCatalog<Parenthesis, String> {
 
     /**
      * 開始括弧
@@ -46,12 +47,14 @@ public enum Parenthesis implements Catalog<Parenthesis> {
     /**
      * コード値
      */
+    @Getter
     private final int code;
 
     /**
-     * 括弧
+     * タグ
      */
-    private final String parenthesis;
+    @Getter
+    private final String tag;
 
     /**
      * 開始括弧の文字列表現を返却します。
@@ -59,7 +62,7 @@ public enum Parenthesis implements Catalog<Parenthesis> {
      * @return 開始括弧の文字列表現
      */
     public static String start() {
-        return START.getParenthesis();
+        return START.getTag();
     }
 
     /**
@@ -68,6 +71,6 @@ public enum Parenthesis implements Catalog<Parenthesis> {
      * @return 終了括弧の文字列表現
      */
     public static String end() {
-        return END.getParenthesis();
+        return END.getTag();
     }
 }

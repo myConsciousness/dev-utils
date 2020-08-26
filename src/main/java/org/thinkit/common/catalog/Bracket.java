@@ -14,6 +14,8 @@
 
 package org.thinkit.common.catalog;
 
+import org.thinkit.api.catalog.BiCatalog;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -25,7 +27,7 @@ import lombok.RequiredArgsConstructor;
  * @version 1.0
  */
 @RequiredArgsConstructor
-public enum Bracket implements Catalog<Bracket> {
+public enum Bracket implements BiCatalog<Bracket, String> {
 
     /**
      * 開始ブラケット
@@ -44,10 +46,10 @@ public enum Bracket implements Catalog<Bracket> {
     private final int code;
 
     /**
-     * ブラケット
+     * タグ
      */
     @Getter
-    private final String bracket;
+    private final String tag;
 
     /**
      * {@link #START} 要素の文字列表現を返却します。
@@ -57,7 +59,7 @@ public enum Bracket implements Catalog<Bracket> {
      * @see #START
      */
     public static String start() {
-        return START.getBracket();
+        return START.getTag();
     }
 
     /**
@@ -68,6 +70,6 @@ public enum Bracket implements Catalog<Bracket> {
      * @see #END
      */
     public static String end() {
-        return END.getBracket();
+        return END.getTag();
     }
 }

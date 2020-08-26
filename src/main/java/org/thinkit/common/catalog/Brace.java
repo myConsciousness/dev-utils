@@ -14,6 +14,8 @@
 
 package org.thinkit.common.catalog;
 
+import org.thinkit.api.catalog.BiCatalog;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -29,9 +31,8 @@ import lombok.RequiredArgsConstructor;
  * @since 1.0
  * @version 1.0
  */
-@Getter
 @RequiredArgsConstructor
-public enum Brace implements Catalog<Brace> {
+public enum Brace implements BiCatalog<Brace, String> {
 
     /**
      * 開始ブレース
@@ -46,12 +47,14 @@ public enum Brace implements Catalog<Brace> {
     /**
      * コード値
      */
+    @Getter
     private final int code;
 
     /**
-     * ブレース
+     * タグ
      */
-    private final String brace;
+    @Getter
+    private final String tag;
 
     /**
      * 開始ブレースの文字列表現を返却します。
@@ -59,7 +62,7 @@ public enum Brace implements Catalog<Brace> {
      * @return 開始ブレースの文字列表現
      */
     public static String start() {
-        return START.getBrace();
+        return START.getTag();
     }
 
     /**
@@ -68,6 +71,6 @@ public enum Brace implements Catalog<Brace> {
      * @return 終了ブレースの文字列表現
      */
     public static String end() {
-        return END.getBrace();
+        return END.getTag();
     }
 }

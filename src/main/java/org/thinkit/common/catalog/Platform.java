@@ -14,6 +14,7 @@
 
 package org.thinkit.common.catalog;
 
+import org.thinkit.api.catalog.Catalog;
 import org.thinkit.common.util.PlatformChecker;
 
 import lombok.Getter;
@@ -22,9 +23,9 @@ import lombok.RequiredArgsConstructor;
 /**
  * プラットフォームを管理するカタログです。<br>
  * 以下の要素が定義されています。<br>
- * {@link WINDOWS}<br>
- * {@link MAC}<br>
- * {@link LINUX}<br>
+ * {@link WINDOWS} <br>
+ * {@link MAC} <br>
+ * {@link LINUX} <br>
  * <br>
  * 以下の静的メソッドを呼び出すことでプログラム実行時のプラットフォーム要素を取得することができます。<br>
  * {@link #getPlatform()}
@@ -72,11 +73,11 @@ public enum Platform implements Catalog<Platform> {
      * プログラムの実行プラットフォームを判定し返却します。<br>
      * <br>
      * プラットフォームの判定には以下のメソッドを使用しています。<br>
-     * そのため{@link #getPlatform()}はWindows、Mac、Linuxのみをサポートしています。<br>
-     * 実行時のプラットフォームがWindows、Mac、Linux以外の場合は必ず{@code null}を返却します。
-     * {@link PlatformChecker#isWindows()}<br>
-     * {@link PlatformChecker#isMac()}<br>
-     * {@link PlatformChecker#isLinux()}<br>
+     * そのため {@link #getPlatform()} はWindows、Mac、Linuxのみをサポートしています。<br>
+     * 実行時のプラットフォームがWindows、Mac、Linux以外の場合は必ず {@code null} を返却します。
+     * {@link PlatformChecker#isWindows()} <br>
+     * {@link PlatformChecker#isMac()} <br>
+     * {@link PlatformChecker#isLinux()} <br>
      *
      * @return プログラム実行時のプラットフォーム要素
      */

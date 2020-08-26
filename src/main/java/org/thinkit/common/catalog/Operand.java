@@ -14,6 +14,8 @@
 
 package org.thinkit.common.catalog;
 
+import org.thinkit.api.catalog.BiCatalog;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -33,9 +35,8 @@ import lombok.RequiredArgsConstructor;
  * @since 1.0
  * @version 1.0
  */
-@Getter
 @RequiredArgsConstructor
-public enum Operand implements Catalog<Operand> {
+public enum Operand implements BiCatalog<Operand, String> {
 
     /**
      * 足し算
@@ -70,12 +71,14 @@ public enum Operand implements Catalog<Operand> {
     /**
      * コード値
      */
+    @Getter
     private final int code;
 
     /**
-     * 演算子
+     * タグ
      */
-    private final String operand;
+    @Getter
+    private final String tag;
 
     /**
      * 足し算の演算子を文字列表現として返却します。
@@ -84,7 +87,7 @@ public enum Operand implements Catalog<Operand> {
      * @see #PLUS
      */
     public static String plus() {
-        return PLUS.getOperand();
+        return PLUS.getTag();
     }
 
     /**
@@ -94,7 +97,7 @@ public enum Operand implements Catalog<Operand> {
      * @see #MINUS
      */
     public static String minus() {
-        return MINUS.getOperand();
+        return MINUS.getTag();
     }
 
     /**
@@ -104,7 +107,7 @@ public enum Operand implements Catalog<Operand> {
      * @see #DEVIDE
      */
     public static String devide() {
-        return DEVIDE.getOperand();
+        return DEVIDE.getTag();
     }
 
     /**
@@ -114,7 +117,7 @@ public enum Operand implements Catalog<Operand> {
      * @see #MULTIPLE
      */
     public static String multiple() {
-        return MULTIPLE.getOperand();
+        return MULTIPLE.getTag();
     }
 
     /**
@@ -124,7 +127,7 @@ public enum Operand implements Catalog<Operand> {
      * @see #EQUAL
      */
     public static String equal() {
-        return EQUAL.getOperand();
+        return EQUAL.getTag();
     }
 
     /**
@@ -134,6 +137,6 @@ public enum Operand implements Catalog<Operand> {
      * @see #ASSIGNMENT
      */
     public static String assignment() {
-        return ASSIGNMENT.getOperand();
+        return ASSIGNMENT.getTag();
     }
 }

@@ -14,6 +14,8 @@
 
 package org.thinkit.common.catalog;
 
+import org.thinkit.api.catalog.BiCatalog;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -34,9 +36,8 @@ import lombok.RequiredArgsConstructor;
  * @see #xml()
  * @see #json()
  */
-@Getter
 @RequiredArgsConstructor
-public enum Extension implements Catalog<Extension> {
+public enum Extension implements BiCatalog<Extension, String> {
 
     /**
      * Java
@@ -56,12 +57,14 @@ public enum Extension implements Catalog<Extension> {
     /**
      * コード値
      */
+    @Getter
     private final int code;
 
     /**
-     * 拡張子
+     * タグ
      */
-    private final String extension;
+    @Getter
+    private final String tag;
 
     /**
      * Javaの拡張子を返却します。
@@ -70,7 +73,7 @@ public enum Extension implements Catalog<Extension> {
      * @see #JAVA
      */
     public static String java() {
-        return JAVA.getExtension();
+        return JAVA.getTag();
     }
 
     /**
@@ -80,7 +83,7 @@ public enum Extension implements Catalog<Extension> {
      * @see #XML
      */
     public static String xml() {
-        return XML.getExtension();
+        return XML.getTag();
     }
 
     /**
@@ -90,6 +93,6 @@ public enum Extension implements Catalog<Extension> {
      * @see #JSON
      */
     public static String json() {
-        return JSON.getExtension();
+        return JSON.getTag();
     }
 }

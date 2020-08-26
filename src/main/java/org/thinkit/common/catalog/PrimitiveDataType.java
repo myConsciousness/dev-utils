@@ -14,6 +14,8 @@
 
 package org.thinkit.common.catalog;
 
+import org.thinkit.api.catalog.Catalog;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -24,7 +26,6 @@ import lombok.RequiredArgsConstructor;
  * @since 1.0
  * @version 1.0
  */
-@Getter
 @RequiredArgsConstructor
 public enum PrimitiveDataType implements Catalog<PrimitiveDataType> {
 
@@ -71,6 +72,7 @@ public enum PrimitiveDataType implements Catalog<PrimitiveDataType> {
     /**
      * コード値
      */
+    @Getter
     private final int code;
 
     /**

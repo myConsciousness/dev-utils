@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
-import org.thinkit.common.exception.LogicException;
+import org.thinkit.common.exception.IllegalNumberFoundException;
 
 /**
  * {@link Indentation}クラスのテストクラスです。
@@ -118,8 +118,7 @@ public final class IndentationTest {
 
     @Test
     public void testGetIndentSpacesWithMinusCase() {
-        Throwable exception = assertThrows(LogicException.class, () -> Indentation.getIndentSpaces(-1));
-        assertEquals("Indent count must be positive.", exception.getMessage());
+        assertThrows(IllegalNumberFoundException.class, () -> Indentation.getIndentSpaces(-1));
     }
 
     @Test
@@ -164,8 +163,7 @@ public final class IndentationTest {
 
     @Test
     public void testGetIndentTabsWithMinus() {
-        Throwable exception = assertThrows(LogicException.class, () -> Indentation.getIndentTabs(-1));
-        assertEquals("Tab count must be positive.", exception.getMessage());
+        assertThrows(IllegalNumberFoundException.class, () -> Indentation.getIndentTabs(-1));
     }
 
     /**

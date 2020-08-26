@@ -14,6 +14,8 @@
 
 package org.thinkit.common.catalog;
 
+import org.thinkit.api.catalog.BiCatalog;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -53,9 +55,8 @@ import lombok.RequiredArgsConstructor;
  * @see #singleQuotation()
  * @see #doubleQuotation()
  */
-@Getter
 @RequiredArgsConstructor
-public enum EscapeSequence implements Catalog<EscapeSequence> {
+public enum EscapeSequence implements BiCatalog<EscapeSequence, String> {
 
     /**
      * 半角空白
@@ -110,12 +111,14 @@ public enum EscapeSequence implements Catalog<EscapeSequence> {
     /**
      * コード値
      */
+    @Getter
     private final int code;
 
     /**
-     * エスケープ文字列
+     * タグ
      */
-    private final String escapeSequence;
+    @Getter
+    private final String tag;
 
     /**
      * 半角空白のエスケープ文字列を返却します。
@@ -124,7 +127,7 @@ public enum EscapeSequence implements Catalog<EscapeSequence> {
      * @see #SPACE
      */
     public static String space() {
-        return SPACE.getEscapeSequence();
+        return SPACE.getTag();
     }
 
     /**
@@ -134,7 +137,7 @@ public enum EscapeSequence implements Catalog<EscapeSequence> {
      * @see #FULL_WIDTH_SPACE
      */
     public static String fullWidthSpace() {
-        return FULL_WIDTH_SPACE.getEscapeSequence();
+        return FULL_WIDTH_SPACE.getTag();
     }
 
     /**
@@ -144,7 +147,7 @@ public enum EscapeSequence implements Catalog<EscapeSequence> {
      * @see #CARRIAGE_RETURN
      */
     public static String carriageReturn() {
-        return CARRIAGE_RETURN.getEscapeSequence();
+        return CARRIAGE_RETURN.getTag();
     }
 
     /**
@@ -154,7 +157,7 @@ public enum EscapeSequence implements Catalog<EscapeSequence> {
      * @see #LINE_FEED
      */
     public static String lineFeed() {
-        return LINE_FEED.getEscapeSequence();
+        return LINE_FEED.getTag();
     }
 
     /**
@@ -164,7 +167,7 @@ public enum EscapeSequence implements Catalog<EscapeSequence> {
      * @see #NEW_LINE
      */
     public static String newLine() {
-        return NEW_LINE.getEscapeSequence();
+        return NEW_LINE.getTag();
     }
 
     /**
@@ -174,7 +177,7 @@ public enum EscapeSequence implements Catalog<EscapeSequence> {
      * @see #TAB
      */
     public static String tab() {
-        return TAB.getEscapeSequence();
+        return TAB.getTag();
     }
 
     /**
@@ -184,7 +187,7 @@ public enum EscapeSequence implements Catalog<EscapeSequence> {
      * @see #LEFT_BRACKET
      */
     public static String leftBracket() {
-        return LEFT_BRACKET.getEscapeSequence();
+        return LEFT_BRACKET.getTag();
     }
 
     /**
@@ -194,7 +197,7 @@ public enum EscapeSequence implements Catalog<EscapeSequence> {
      * @see #RIGHT_BRACKET
      */
     public static String rightBracket() {
-        return RIGHT_BRACKET.getEscapeSequence();
+        return RIGHT_BRACKET.getTag();
     }
 
     /**
@@ -204,7 +207,7 @@ public enum EscapeSequence implements Catalog<EscapeSequence> {
      * @see #SINGLE_QUOTATION
      */
     public static String singleQuotation() {
-        return SINGLE_QUOTATION.getEscapeSequence();
+        return SINGLE_QUOTATION.getTag();
     }
 
     /**
@@ -214,6 +217,6 @@ public enum EscapeSequence implements Catalog<EscapeSequence> {
      * @see #DOUBLE_QUOTATION
      */
     public static String doubleQuotation() {
-        return DOUBLE_QUOTATION.getEscapeSequence();
+        return DOUBLE_QUOTATION.getTag();
     }
 }
