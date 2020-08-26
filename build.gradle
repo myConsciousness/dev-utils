@@ -41,8 +41,15 @@ publishing {
 }
 
 repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/myConsciousness/dev-utils")
+        credentials {
+            username = System.getenv("GITHUB_USER")
+            password = System.getenv("GITHUB_DOWNLOAD_PACKAGE_TOKEN")
+        }
+    }
+
     jcenter()
 }
 
@@ -76,6 +83,8 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.12'
 	annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    implementation 'org.thinkit.api.catalog:catalog-api:v1.0.1'
 }
 
 test {
