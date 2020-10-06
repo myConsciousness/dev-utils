@@ -15,10 +15,8 @@
 package org.thinkit.common.catalog;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
-import org.thinkit.common.exception.IllegalNumberFoundException;
 
 /**
  * {@link Indentation}クラスのテストクラスです。
@@ -117,11 +115,6 @@ public final class IndentationTest {
     }
 
     @Test
-    public void testGetIndentSpacesWithMinusCase() {
-        assertThrows(IllegalNumberFoundException.class, () -> Indentation.getIndentSpaces(-1));
-    }
-
-    @Test
     public void testGetIndentTabsWithDefault() {
         final int tabCount = 1;
         final String tab = this.createTabs(tabCount);
@@ -159,11 +152,6 @@ public final class IndentationTest {
 
         assertEquals(tabCount, indentTab.length());
         assertEquals(thousandTabs, indentTab);
-    }
-
-    @Test
-    public void testGetIndentTabsWithMinus() {
-        assertThrows(IllegalNumberFoundException.class, () -> Indentation.getIndentTabs(-1));
     }
 
     /**

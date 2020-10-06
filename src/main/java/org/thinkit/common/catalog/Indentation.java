@@ -15,7 +15,7 @@
 package org.thinkit.common.catalog;
 
 import org.thinkit.api.catalog.BiCatalog;
-import org.thinkit.common.Precondition;
+import org.thinkit.common.Preconditions;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -117,7 +117,7 @@ public enum Indentation implements BiCatalog<Indentation, String> {
      */
     public static String getIndentSpaces(int number) {
 
-        Precondition.requirePositive(number);
+        Preconditions.requirePositive(number);
 
         final StringBuilder indentSpaces = new StringBuilder(number);
         final String space = space();
@@ -153,7 +153,7 @@ public enum Indentation implements BiCatalog<Indentation, String> {
      */
     public static String getIndentTabs(int number) {
 
-        Precondition.requirePositive(number);
+        Preconditions.requirePositive(number);
 
         final StringBuilder indentTabs = new StringBuilder(number);
         final String tabCode = tabCode();
